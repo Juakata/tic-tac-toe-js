@@ -18,6 +18,19 @@ img{
   width: 100px;
 }
 
+#warning {
+  display: none;
+  background: red;
+  border-radius: 10px;
+  padding: 5px;
+  color: white;
+}
+
+.show-errors input:invalid {
+  border: 2px dotted red;
+  box-shadow: 1px 1px 5px red;
+}
+
 .gameBoard {
   padding: 50px;
   left: 0;

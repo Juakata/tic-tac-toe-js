@@ -148,13 +148,19 @@ function resetGame() {
 
 
 const Game = () => {
-  formData.player1 = document.getElementById('player1').value;
-  formData.player2 = document.getElementById('player2').value;
+  formData.player1 = document.getElementById('player1');
+  formData.player2 = document.getElementById('player2');
   const weapon = document.getElementById('x').checked;
-  player1 = Player(formData.player1, formData.weapon1(weapon), 0);
-  player2 = Player(formData.player2, formData.weapon2(weapon), 0);
-  current = player1;
-  GameBoard.displayBoard();
+  if (!formData.player1.validity.valid || !formData.player2.validity.valid) {
+    document.getElementById('form').classList.add('show-errors');
+    document.getElementById('warning').innerHTML = 'Please complete the form';
+    document.getElementById('warning').style.display = 'block';
+  } else {
+    player1 = Player(formData.player1.value, formData.weapon1(weapon), 0);
+    player2 = Player(formData.player2.value, formData.weapon2(weapon), 0);
+    current = player1;
+    GameBoard.displayBoard();
+  }
 };
 
 document.getElementById('start').addEventListener('click', Game, false);
